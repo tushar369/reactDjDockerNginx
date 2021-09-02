@@ -1,0 +1,20 @@
+version: '3'
+
+services: 
+
+  backend:
+    build: 
+      context: ./backend
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
+    ports: 
+      - '8000:8000'
+
+  frontend: 
+    build: 
+      context: ./frontend
+    volumes:
+      - react-build:/frontend/build
+
+      
+
+      
